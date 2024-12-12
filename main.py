@@ -7,12 +7,13 @@ from scoreboard import Scoreboard
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT =600
 SLEEP_TIME = 0.1
+INIT_NUMBER_OF_CARS = 20
 screen = Screen()
 
 screen.setup(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
 screen.tracer(0)
 
-car_manager = CarManager(20)
+car_manager = CarManager(INIT_NUMBER_OF_CARS)
 player = Player()
 scoreboard = Scoreboard((-250,250))
 sleep_time = SLEEP_TIME
@@ -30,7 +31,7 @@ while not game_over:
     car_manager.move_cars()
     #check collisions
     game_over = car_manager.detect_collision(player)
-    if (player.ycor()+15)>=SCREEN_HEIGHT/2:
+    if (player.ycor()+20)>=SCREEN_HEIGHT/2:
         scoreboard.add_level()
         sleep_time *= 0.9
         player.player_reset()
